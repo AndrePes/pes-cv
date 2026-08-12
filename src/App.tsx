@@ -152,7 +152,7 @@ function App() {
               <div className="absolute -inset-6 rounded-[2.5rem] bg-blue-500/10 blur-3xl" />
               <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-panel shadow-2xl">
                 <div className="aspect-[4/5] overflow-hidden">
-                  <img src="/assets/Andre_Peschyras-02.jpg" alt="Porträt von André Peschyras" className="h-full w-full object-cover object-[52%_35%] saturate-[.9] transition duration-700 hover:scale-[1.02]" />
+                  <img src="/assets/Andre_Peschyras-04%20Large%20copy.jpeg" alt="Porträt von André Peschyras" className="h-full w-full object-cover object-[52%_35%] saturate-[.9] transition duration-700 hover:scale-[1.02]" />
                 </div>
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink via-ink/80 to-transparent px-7 pb-7 pt-28">
                   <div className="flex items-end justify-between gap-5">

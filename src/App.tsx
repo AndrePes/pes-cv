@@ -18,20 +18,20 @@ const experience: Experience[] = [
     period: '07/2024 — heute',
     company: 'Concircle Consulting GmbH',
     role: 'Software Engineer',
-    description: 'Entwicklung und Beratung kundenspezifischer Erweiterungen für SAP Digital Manufacturing. Mitarbeit am Forschungsprojekt BePro-CEND zur Umsetzung von Circular Economy durch intelligente Datennutzung.',
+    description: 'Entwicklung kundenspezifischer Erweiterungen und Integrationen für SAP Digital Manufacturing. Konzeption von Shopfloor-, Manufacturing- und Enterprise-Integrationen, technische Zielarchitekturen sowie Mitarbeit an den Forschungsprojekten GRROW und BePro-CEND.',
     current: true,
   },
   {
     period: '10/2023 — 06/2024',
     company: 'TEQYARD GmbH · Braunschweig',
     role: 'IoT Developer',
-    description: 'Entwicklung von Hardware und Software für eingebettete, batteriebetriebene Geräte.',
+    description: 'Konzeption und Entwicklung von Hardware und Software für batteriebetriebene IoT-Geräte zur satellitengestützten Überwachung von Seefrachtcontainern. Technische Projektleitung, Requirements Engineering und Koordination externer Entwicklungspartner.',
   },
   {
     period: '01/2020 — 10/2023',
     company: 'Bühler GmbH · Braunschweig',
     role: 'IoT Specialist',
-    description: 'Konzeption und Implementierung von IoT-Lösungen für spezifische Anwendungen entlang der Digitalisierungsstrategie in Manufacturing & Logistics.',
+    description: 'Konzeption, Entwicklung und Rollout IoT-basierter Monitoringlösungen für Verbrauchsdaten und Industriemaschinen. Entwicklung eines internen IoT-Grundkurses sowie Industrial-IoT-Lösungen auf Basis von Azure IoT, MQTT und OPC UA.',
   },
   {
     period: '04/2013 — 12/2019',
@@ -42,21 +42,39 @@ const experience: Experience[] = [
 ]
 
 const skills = [
-  { name: 'C / C++', detail: 'Embedded Systems', value: 82 },
-  { name: 'Python', detail: 'Automation & IoT', value: 80 },
-  { name: 'C# / .NET', detail: 'Software Engineering', value: 78 },
-  { name: 'TypeScript / React', detail: 'Web Applications', value: 74 },
-  { name: 'SQL', detail: 'Data & Integration', value: 70 },
-  { name: 'Microsoft Azure', detail: 'IoT Hub, Data Factory, DevOps', value: 76 },
+  { name: 'C# / .NET', detail: 'Desktop- & Enterprise-Anwendungen' },
+  { name: 'Python', detail: 'Automation, IoT & Datenverarbeitung' },
+  { name: 'C / C++', detail: 'Embedded Systems & hardwarenahe Entwicklung' },
+  { name: 'SQL', detail: 'Datenhaltung & Systemintegration' },
+  { name: 'JavaScript / TypeScript', detail: 'React · Node.js · Vite' },
+  { name: 'Microsoft Azure', detail: 'IoT Hub · Data Factory · Functions · Static Web Apps' },
 ]
 
 const domains = [
   ['SAP Applications', 'Digital Manufacturing Cloud · BTP · S/4HANA'],
-  ['Agentic AI', 'Codex · Copilot · OpenClaw'],
-  ['IoT / IIoT', 'MQTT · Modbus · CAN-Bus · LoRa'],
-  ['Automation', 'SIMATIC S7-1200 · TIA Portal · OPC UA'],
-  ['Embedded Systems', 'Raspberry Pi · Arduino · ESP32'],
-  ['Project Management', 'Jira · Confluence · GitHub Projects'],
+  ['Tools & AI', 'Git · GitHub · Jira · Confluence · Codex · GitHub Copilot · Claude Code'],
+  ['Industrial IoT & OT', 'MQTT · OPC UA · Modbus · CAN-Bus · LoRa'],
+  ['Automation', 'Siemens S7-1200 · TIA Portal'],
+  ['Embedded Systems', 'ESP32 · Raspberry Pi · Arduino'],
+  ['Solution Architecture', 'Shopfloor · Manufacturing · Enterprise Integration'],
+]
+
+const projects = [
+  {
+    title: 'Medical Device Monitoring',
+    type: 'Freelance',
+    description: 'C#/.NET-Desktopanwendung zur Anbindung eines medizinischen Multiparameter-Diagnostikgeräts über USB/Serial sowie zur Echtzeiterfassung und Visualisierung der Messdaten mit ScottPlot.',
+  },
+  {
+    title: 'Event Equipment Platform',
+    type: 'Open Source',
+    description: 'Webplattform zur Vermittlung von Equipment und Dienstleistungen für Veranstaltungen.',
+  },
+  {
+    title: 'Sports Results Application',
+    type: 'Open Source',
+    description: 'Webanwendung zur Erfassung und Darstellung von Schießergebnissen für eine Sportveranstaltung.',
+  },
 ]
 
 const interests = [
@@ -126,7 +144,7 @@ const profiles = [
 ]
 
 const nav = [
-  ['Über mich', 'about'], ['Erfahrung', 'experience'], ['Skills', 'skills'], ['Profile', 'profiles'], ['Kontakt', 'contact'],
+  ['Über mich', 'about'], ['Erfahrung', 'experience'], ['Skills', 'skills'], ['Projekte', 'projects'], ['Profile', 'profiles'], ['Kontakt', 'contact'],
 ]
 
 function App() {
@@ -189,13 +207,13 @@ function App() {
                 <span className="relative flex h-2.5 w-2.5"><span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-70" /><span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400" /></span>
                 <span className="text-xs font-semibold uppercase tracking-[.22em] text-slate-400">Offen für Festanstellung & Freelance-Projekte</span>
               </div>
-              <p className="eyebrow mb-4">Software Engineer · IoT Developer · Creative Freelancer</p>
+              <p className="eyebrow mb-4">Software Engineer · Industrial IoT · Solution Architecture</p>
               <h1 className="max-w-3xl text-[clamp(3.4rem,8vw,7rem)] font-semibold leading-[.88] tracking-[-.065em] text-white">
                 Technik, die<br />
                 <span className="bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-600 bg-clip-text text-transparent">etwas bewegt.</span>
               </h1>
               <p className="mt-8 max-w-2xl text-lg leading-relaxed text-slate-400 sm:text-xl">
-                Ich bin André — Softwareentwickler und kreativer Freelancer. In Festanstellung oder im Projekt verbinde ich <span className="text-white">IoT, Embedded Systems und Cloud-Technologien</span> zu Lösungen, die in der Praxis funktionieren. Freelance unterstütze ich außerdem mit <span className="text-white">Fotografie, Videografie und Grafikdesign</span>.
+                Ich bin André — Software Engineer mit langjähriger Erfahrung an der Schnittstelle von <span className="text-white">Industrial IoT, Manufacturing, Cloud und Enterprise-Systemen</span>. Mein Fokus liegt auf integrierten Lösungen vom Shopfloor und Embedded Device bis zur Cloud- und SAP-Plattform — in Festanstellung oder im Projekt. Freelance unterstütze ich außerdem mit <span className="text-white">Fotografie, Videografie und Grafikdesign</span>.
               </p>
               <div className="mt-10 flex flex-wrap gap-4">
                 <a href="#experience" className="group flex items-center gap-3 rounded-full bg-blue-500 px-6 py-3.5 text-sm font-semibold text-white shadow-glow transition hover:bg-blue-400">
@@ -270,7 +288,7 @@ function App() {
             <div className="grid gap-5 lg:grid-cols-2">
               <div className="card p-7 sm:p-9">
                 <div className="mb-8 flex items-center gap-3"><span className="grid h-10 w-10 place-items-center rounded-xl bg-blue-500/10 text-blue-400"><Code2 size={19} /></span><h3 className="font-semibold text-white">Sprachen & Plattformen</h3></div>
-                <div className="space-y-6">{skills.map(skill => <div key={skill.name}><div className="mb-2 flex items-end justify-between gap-4"><div><p className="text-sm font-semibold text-slate-200">{skill.name}</p><p className="text-xs text-slate-500">{skill.detail}</p></div><span className="font-mono text-[11px] text-slate-600">{skill.value}</span></div><div className="h-1 overflow-hidden rounded-full bg-white/[0.06]"><div className="h-full rounded-full bg-gradient-to-r from-blue-600 to-cyan-400" style={{ width: `${skill.value}%` }} /></div></div>)}</div>
+                <div className="grid gap-3 sm:grid-cols-2">{skills.map(skill => <div key={skill.name} className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-4 transition hover:border-blue-400/20"><div className="mb-2 flex items-center gap-2"><Check size={13} className="shrink-0 text-blue-400" /><p className="text-sm font-semibold text-slate-200">{skill.name}</p></div><p className="text-xs leading-relaxed text-slate-500">{skill.detail}</p></div>)}</div>
               </div>
               <div className="card p-7 sm:p-9">
                 <div className="mb-8 flex items-center gap-3"><span className="grid h-10 w-10 place-items-center rounded-xl bg-blue-500/10 text-blue-400"><BrainCircuit size={19} /></span><h3 className="font-semibold text-white">Domänen & Tools</h3></div>
@@ -280,7 +298,19 @@ function App() {
           </div>
         </section>
 
-        <section id="freelance" className="py-24 sm:py-32">
+        <section id="projects" className="py-24 sm:py-32">
+          <div className="mx-auto max-w-7xl px-6 lg:px-10">
+            <div className="mb-14 grid gap-6 lg:grid-cols-[1fr_.75fr] lg:items-end">
+              <div><p className="eyebrow mb-4">Eigene & Freelance-Projekte</p><h2 className="section-heading">Ideen in funktionierende<br />Produkte übersetzt.</h2></div>
+              <p className="max-w-xl text-sm leading-relaxed text-slate-400 lg:justify-self-end">Ausgewählte Anwendungen zwischen Medizintechnik, Veranstaltungsmanagement und Sport — eigenständig konzipiert und umgesetzt.</p>
+            </div>
+            <div className="grid gap-5 lg:grid-cols-3">
+              {projects.map(project => <article key={project.title} className="card flex flex-col p-7 transition duration-300 hover:-translate-y-1 hover:border-blue-400/25 hover:bg-blue-500/[.035] sm:p-8"><span className="w-fit rounded-full bg-blue-500/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-blue-400">{project.type}</span><h3 className="mt-5 text-xl font-semibold text-white">{project.title}</h3><p className="mt-3 leading-relaxed text-slate-400">{project.description}</p></article>)}
+            </div>
+          </div>
+        </section>
+
+        <section id="freelance" className="border-y border-white/[0.06] bg-white/[0.018] py-24 sm:py-32">
           <div className="mx-auto max-w-7xl px-6 lg:px-10">
             <div className="mb-14 grid gap-6 lg:grid-cols-[1fr_.75fr] lg:items-end">
               <div><p className="eyebrow mb-4">Freelance-Leistungen</p><h2 className="section-heading">Technisches Verständnis.<br />Kreativ in Szene gesetzt.</h2></div>
@@ -303,9 +333,9 @@ function App() {
           </div>
         </section>
 
-        <section className="border-t border-white/[0.06] bg-white/[0.018] py-24 sm:py-32">
+        <section className="py-24 sm:py-32">
           <div className="mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-2 lg:px-10">
-            <div><p className="eyebrow mb-4">Ausbildung</p><h2 className="section-heading mb-10">Fundament.</h2><div className="space-y-8 border-l border-white/10 pl-7"><div><p className="text-xs font-mono text-blue-400">2005 — 2009</p><h3 className="mt-2 text-lg font-semibold text-white">Ausbildung zum Industriemechaniker</h3><p className="mt-1 text-sm text-slate-500">Bildungswerkstatt Georgsmarienhütte</p><p className="mt-3 leading-relaxed text-slate-400">Herstellung, Instandhaltung und Überwachung technischer Systeme sowie Einrichtung und Inbetriebnahme von Produktionsanlagen.</p></div><div><p className="text-xs font-mono text-blue-400">2003</p><h3 className="mt-2 text-lg font-semibold text-white">Hauptschulabschluss</h3><p className="mt-1 text-sm text-slate-500">Schule am roten Berg · Hasbergen</p></div></div></div>
+            <div><p className="eyebrow mb-4">Ausbildung</p><h2 className="section-heading mb-10">Fundament.</h2><div className="space-y-8 border-l border-white/10 pl-7"><div><p className="text-xs font-mono text-blue-400">08/2005 — 01/2009</p><h3 className="mt-2 text-lg font-semibold text-white">Ausbildung zum Industriemechaniker</h3><p className="mt-1 text-sm text-slate-500">Bildungswerkstatt Georgsmarienhütte</p><p className="mt-3 leading-relaxed text-slate-400">Schwerpunkt Produktionstechnik, Maschinen- und Anlagenbau sowie Instandhaltung.</p></div></div></div>
             <div><p className="eyebrow mb-4">Abseits des Codes</p><h2 className="section-heading mb-10">Interessen.</h2><div className="grid grid-cols-2 gap-3">{interests.map(({icon: Icon, label}) => <div key={label} className="card group flex min-h-32 flex-col justify-between p-5 transition hover:border-blue-400/20 hover:bg-blue-500/[.04]"><Icon size={24} className="text-blue-400 transition group-hover:scale-110" /><p className="text-sm font-medium text-slate-300">{label}</p></div>)}</div></div>
           </div>
         </section>
@@ -358,7 +388,7 @@ function App() {
 
       <footer className="mx-auto max-w-7xl px-6 py-12 lg:px-10">
         <div className="flex flex-col justify-between gap-8 border-b border-white/[0.06] pb-10 md:flex-row">
-          <div><p className="text-lg font-semibold text-white">André Peschyras</p><p className="mt-2 text-sm text-slate-500">Software Engineer · IoT Developer · Creative Freelancer</p></div>
+          <div><p className="text-lg font-semibold text-white">André Peschyras</p><p className="mt-2 text-sm text-slate-500">Software Engineer · Industrial IoT · Systems & Solution Architecture</p></div>
           <div className="grid gap-3 text-sm sm:grid-cols-2 sm:gap-x-10"><a href="tel:+4917630475008" className="flex items-center gap-2 text-slate-400 hover:text-white"><Phone size={14} /> +49 176 30 47 5008</a><span className="flex items-center gap-2 text-slate-400"><MapPin size={14} /> 38551 Ribbesbüttel</span><a href="https://peschyras.com" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-slate-400 hover:text-white"><ArrowUpRight size={14} /> peschyras.com</a><a href="mailto:mail@andre-peschyras.de" className="flex items-center gap-2 text-slate-400 hover:text-white"><Mail size={14} /> E-Mail senden</a></div>
         </div>
         <div className="flex flex-col gap-3 pt-7 text-xs text-slate-600 sm:flex-row sm:items-center sm:justify-between"><p>© {new Date().getFullYear()} André Peschyras</p><p>Entwickelt mit React · TypeScript · Tailwind CSS</p></div>

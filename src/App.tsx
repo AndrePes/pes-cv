@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import {
   ArrowDown, ArrowUpRight, BrainCircuit, Camera, Check, Code2,
-  Download, GitFork, Link, Mail, MapPin, Menu, Mountain,
+  Download, GitFork, Globe2, Link, Mail, MapPin, Menu, Mountain,
   Palette, Phone, X, Zap,
 } from 'lucide-react'
 
@@ -66,8 +66,46 @@ const interests = [
   { icon: Code2, label: 'Coding for good' },
 ]
 
+const profiles = [
+  {
+    icon: Link,
+    name: 'LinkedIn',
+    handle: '/andre-peschyras',
+    description: 'Beruflicher Werdegang, Fachthemen und mein professionelles Netzwerk.',
+    url: 'https://www.linkedin.com/in/andre-peschyras',
+  },
+  {
+    icon: GitFork,
+    name: 'GitHub',
+    handle: '/AndrePes',
+    description: 'Code, Experimente und ausgewählte Projekte aus Software und IoT.',
+    url: 'https://github.com/AndrePes',
+  },
+  {
+    icon: Camera,
+    name: 'Instagram',
+    handle: '@pes.and',
+    description: 'Fotografie, kreative Perspektiven und Eindrücke abseits des Codes.',
+    url: 'https://www.instagram.com/pes.and',
+  },
+  {
+    icon: Globe2,
+    name: 'Website',
+    handle: 'peschyras.com',
+    description: 'Meine persönliche Website als zentraler Einstieg in meine Arbeit.',
+    url: 'https://peschyras.com',
+  },
+  {
+    icon: Globe2,
+    name: 'malt.com',
+    handle: 'andrepeschyras1',
+    description: 'Mein Profil auf der Plattform für freiberufliche Experten und Projekte.',
+    url: 'https://www.malt.de/profile/andrepeschyras1',
+  },
+]
+
 const nav = [
-  ['Über mich', 'about'], ['Erfahrung', 'experience'], ['Skills', 'skills'], ['Kontakt', 'contact'],
+  ['Über mich', 'about'], ['Erfahrung', 'experience'], ['Skills', 'skills'], ['Profile', 'profiles'], ['Kontakt', 'contact'],
 ]
 
 function App() {
@@ -225,6 +263,44 @@ function App() {
           <div className="mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-2 lg:px-10">
             <div><p className="eyebrow mb-4">Ausbildung</p><h2 className="section-heading mb-10">Fundament.</h2><div className="space-y-8 border-l border-white/10 pl-7"><div><p className="text-xs font-mono text-blue-400">2005 — 2009</p><h3 className="mt-2 text-lg font-semibold text-white">Ausbildung zum Industriemechaniker</h3><p className="mt-1 text-sm text-slate-500">Bildungswerkstatt Georgsmarienhütte</p><p className="mt-3 leading-relaxed text-slate-400">Herstellung, Instandhaltung und Überwachung technischer Systeme sowie Einrichtung und Inbetriebnahme von Produktionsanlagen.</p></div><div><p className="text-xs font-mono text-blue-400">2003</p><h3 className="mt-2 text-lg font-semibold text-white">Hauptschulabschluss</h3><p className="mt-1 text-sm text-slate-500">Schule am roten Berg · Hasbergen</p></div></div></div>
             <div><p className="eyebrow mb-4">Abseits des Codes</p><h2 className="section-heading mb-10">Interessen.</h2><div className="grid grid-cols-2 gap-3">{interests.map(({icon: Icon, label}) => <div key={label} className="card group flex min-h-32 flex-col justify-between p-5 transition hover:border-blue-400/20 hover:bg-blue-500/[.04]"><Icon size={24} className="text-blue-400 transition group-hover:scale-110" /><p className="text-sm font-medium text-slate-300">{label}</p></div>)}</div></div>
+          </div>
+        </section>
+
+        <section id="profiles" className="border-t border-white/[0.06] bg-white/[0.018] py-24 sm:py-32">
+          <div className="mx-auto max-w-7xl px-6 lg:px-10">
+            <div className="mb-14 flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
+              <div>
+                <p className="eyebrow mb-4">Online entdecken</p>
+                <h2 className="section-heading">Meine öffentlichen Profile.</h2>
+              </div>
+              <p className="max-w-md text-sm leading-relaxed text-slate-500">
+                Mehr über meine Arbeit, Projekte und kreativen Interessen — auf den Plattformen, auf denen ich aktiv bin.
+              </p>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {profiles.map(({ icon: Icon, name, handle, description, url }) => (
+                <a
+                  key={name}
+                  href={url}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`${name}-Profil von André Peschyras öffnen`}
+                  className="card group flex min-h-64 flex-col p-6 transition duration-300 hover:-translate-y-1 hover:border-blue-400/30 hover:bg-blue-500/[.045]"
+                >
+                  <div className="flex items-start justify-between">
+                    <span className="grid h-11 w-11 place-items-center rounded-xl border border-blue-400/15 bg-blue-500/10 text-blue-400 transition group-hover:border-blue-300/30 group-hover:bg-blue-500 group-hover:text-white">
+                      <Icon size={19} />
+                    </span>
+                    <ArrowUpRight size={18} className="text-slate-600 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-blue-400" />
+                  </div>
+                  <div className="mt-auto pt-10">
+                    <h3 className="text-lg font-semibold text-white">{name}</h3>
+                    <p className="mt-1 font-mono text-xs text-blue-400">{handle}</p>
+                    <p className="mt-4 text-sm leading-relaxed text-slate-500">{description}</p>
+                  </div>
+                </a>
+              ))}
+            </div>
           </div>
         </section>
 

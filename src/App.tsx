@@ -166,22 +166,22 @@ function App() {
             <div className="relative z-10">
               <div className="mb-8 flex items-center gap-3">
                 <span className="relative flex h-2.5 w-2.5"><span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-70" /><span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400" /></span>
-                <span className="text-xs font-semibold uppercase tracking-[.22em] text-slate-400">Bereit für neue Herausforderungen</span>
+                <span className="text-xs font-semibold uppercase tracking-[.22em] text-slate-400">Offen für Festanstellung & Freelance-Projekte</span>
               </div>
-              <p className="eyebrow mb-4">Software Engineer · IoT Developer</p>
+              <p className="eyebrow mb-4">Software Engineer · IoT Developer · Creative Freelancer</p>
               <h1 className="max-w-3xl text-[clamp(3.4rem,8vw,7rem)] font-semibold leading-[.88] tracking-[-.065em] text-white">
                 Technik, die<br />
                 <span className="bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-600 bg-clip-text text-transparent">etwas bewegt.</span>
               </h1>
               <p className="mt-8 max-w-2xl text-lg leading-relaxed text-slate-400 sm:text-xl">
-                Ich bin André — Softwareentwickler mit einem Faible für industrielle Digitalisierung. Ich verbinde <span className="text-white">IoT, Embedded Systems und Cloud-Technologien</span> zu Lösungen, die in der Praxis funktionieren.
+                Ich bin André — Softwareentwickler und kreativer Freelancer. In Festanstellung oder im Projekt verbinde ich <span className="text-white">IoT, Embedded Systems und Cloud-Technologien</span> zu Lösungen, die in der Praxis funktionieren. Freelance unterstütze ich außerdem mit <span className="text-white">Fotografie, Videografie und Grafikdesign</span>.
               </p>
               <div className="mt-10 flex flex-wrap gap-4">
                 <a href="#experience" className="group flex items-center gap-3 rounded-full bg-blue-500 px-6 py-3.5 text-sm font-semibold text-white shadow-glow transition hover:bg-blue-400">
                   Meine Erfahrung <ArrowDown size={16} className="transition group-hover:translate-y-0.5" />
                 </a>
-                <a href="mailto:mail@andre-peschyras.de" className="flex items-center gap-3 rounded-full border border-white/10 px-6 py-3.5 text-sm font-semibold text-white transition hover:border-white/25 hover:bg-white/5">
-                  Kontakt aufnehmen <ArrowUpRight size={16} />
+                <a href="#freelance" className="flex items-center gap-3 rounded-full border border-white/10 px-6 py-3.5 text-sm font-semibold text-white transition hover:border-white/25 hover:bg-white/5">
+                  Freelance-Angebot <ArrowUpRight size={16} />
                 </a>
               </div>
             </div>
@@ -259,7 +259,30 @@ function App() {
           </div>
         </section>
 
-        <section className="py-24 sm:py-32">
+        <section id="freelance" className="py-24 sm:py-32">
+          <div className="mx-auto max-w-7xl px-6 lg:px-10">
+            <div className="mb-14 grid gap-6 lg:grid-cols-[1fr_.75fr] lg:items-end">
+              <div><p className="eyebrow mb-4">Freelance-Leistungen</p><h2 className="section-heading">Technisches Verständnis.<br />Kreativ in Szene gesetzt.</h2></div>
+              <p className="max-w-xl text-sm leading-relaxed text-slate-400 lg:justify-self-end">Für Unternehmen, Agenturen und Selbstständige entwickle ich visuelle Inhalte mit einem sicheren Gespür für Technik, Marke und Zielgruppe — flexibel als einzelnes Gewerk oder als stimmiges Gesamtpaket.</p>
+            </div>
+            <div className="grid gap-5 lg:grid-cols-3">
+              {freelanceServices.map(({ icon: Icon, title, description, tags }) => (
+                <article key={title} className="card group flex flex-col p-7 transition duration-300 hover:-translate-y-1 hover:border-blue-400/25 hover:bg-blue-500/[.035] sm:p-8">
+                  <span className="grid h-12 w-12 place-items-center rounded-2xl bg-blue-500/10 text-blue-400 transition group-hover:bg-blue-500 group-hover:text-white"><Icon size={22} /></span>
+                  <h3 className="mt-7 text-xl font-semibold text-white">{title}</h3>
+                  <p className="mt-3 flex-1 leading-relaxed text-slate-400">{description}</p>
+                  <div className="mt-7 flex flex-wrap gap-2">{tags.map(tag => <span key={tag} className="rounded-full border border-white/[0.08] bg-white/[0.025] px-3 py-1.5 text-[11px] text-slate-400">{tag}</span>)}</div>
+                </article>
+              ))}
+            </div>
+            <div className="mt-8 flex flex-col gap-4 rounded-2xl border border-blue-400/15 bg-blue-500/[.05] p-6 sm:flex-row sm:items-center sm:justify-between">
+              <div><p className="font-semibold text-white">Ein Projekt im Kopf?</p><p className="mt-1 text-sm text-slate-400">Schreiben Sie mir kurz, worum es geht — ich melde mich mit einer passenden Einschätzung.</p></div>
+              <a href="mailto:mail@andre-peschyras.de?subject=Freelance-Anfrage" className="flex shrink-0 items-center justify-center gap-2 rounded-full bg-blue-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-blue-400">Projekt anfragen <ArrowUpRight size={15} /></a>
+            </div>
+          </div>
+        </section>
+
+        <section className="border-t border-white/[0.06] bg-white/[0.018] py-24 sm:py-32">
           <div className="mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-2 lg:px-10">
             <div><p className="eyebrow mb-4">Ausbildung</p><h2 className="section-heading mb-10">Fundament.</h2><div className="space-y-8 border-l border-white/10 pl-7"><div><p className="text-xs font-mono text-blue-400">2005 — 2009</p><h3 className="mt-2 text-lg font-semibold text-white">Ausbildung zum Industriemechaniker</h3><p className="mt-1 text-sm text-slate-500">Bildungswerkstatt Georgsmarienhütte</p><p className="mt-3 leading-relaxed text-slate-400">Herstellung, Instandhaltung und Überwachung technischer Systeme sowie Einrichtung und Inbetriebnahme von Produktionsanlagen.</p></div><div><p className="text-xs font-mono text-blue-400">2003</p><h3 className="mt-2 text-lg font-semibold text-white">Hauptschulabschluss</h3><p className="mt-1 text-sm text-slate-500">Schule am roten Berg · Hasbergen</p></div></div></div>
             <div><p className="eyebrow mb-4">Abseits des Codes</p><h2 className="section-heading mb-10">Interessen.</h2><div className="grid grid-cols-2 gap-3">{interests.map(({icon: Icon, label}) => <div key={label} className="card group flex min-h-32 flex-col justify-between p-5 transition hover:border-blue-400/20 hover:bg-blue-500/[.04]"><Icon size={24} className="text-blue-400 transition group-hover:scale-110" /><p className="text-sm font-medium text-slate-300">{label}</p></div>)}</div></div>
@@ -307,14 +330,14 @@ function App() {
         <section id="contact" className="px-4 pb-4 sm:px-6 sm:pb-6">
           <div className="relative mx-auto max-w-[1480px] overflow-hidden rounded-[2rem] border border-blue-400/20 bg-blue-600 px-6 py-20 text-center shadow-[0_0_100px_rgba(37,99,235,.18)] sm:py-28">
             <div className="absolute -left-24 -top-24 h-72 w-72 rounded-full border border-white/10" /><div className="absolute -right-24 -bottom-32 h-96 w-96 rounded-full border border-white/10" />
-            <div className="relative mx-auto max-w-3xl"><p className="mb-5 text-xs font-semibold uppercase tracking-[.22em] text-blue-100">Lassen Sie uns sprechen</p><h2 className="text-4xl font-semibold tracking-tight text-white sm:text-6xl">Bereit, gemeinsam etwas zu bewegen?</h2><p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-blue-100">Ich freue mich auf anspruchsvolle Projekte, neue Perspektiven und ein persönliches Kennenlernen.</p><button onClick={copyEmail} className="mx-auto mt-9 flex items-center gap-3 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-blue-700 transition hover:scale-[1.02]">{copied ? <><Check size={17} /> E-Mail kopiert</> : <><Mail size={17} /> mail@andre-peschyras.de</>}</button></div>
+            <div className="relative mx-auto max-w-3xl"><p className="mb-5 text-xs font-semibold uppercase tracking-[.22em] text-blue-100">Festanstellung oder Freelance</p><h2 className="text-4xl font-semibold tracking-tight text-white sm:text-6xl">Bereit, gemeinsam etwas zu bewegen?</h2><p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-blue-100">Ob langfristige Position im Team, technisches Projekt oder kreativer Auftrag in Fotografie, Videografie und Grafikdesign — ich freue mich auf Ihre Anfrage.</p><button onClick={copyEmail} className="mx-auto mt-9 flex items-center gap-3 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-blue-700 transition hover:scale-[1.02]">{copied ? <><Check size={17} /> E-Mail kopiert</> : <><Mail size={17} /> mail@andre-peschyras.de</>}</button></div>
           </div>
         </section>
       </main>
 
       <footer className="mx-auto max-w-7xl px-6 py-12 lg:px-10">
         <div className="flex flex-col justify-between gap-8 border-b border-white/[0.06] pb-10 md:flex-row">
-          <div><p className="text-lg font-semibold text-white">André Peschyras</p><p className="mt-2 text-sm text-slate-500">IoT Developer / Software Engineer</p></div>
+          <div><p className="text-lg font-semibold text-white">André Peschyras</p><p className="mt-2 text-sm text-slate-500">Software Engineer · IoT Developer · Creative Freelancer</p></div>
           <div className="grid gap-3 text-sm sm:grid-cols-2 sm:gap-x-10"><a href="tel:+4917630475008" className="flex items-center gap-2 text-slate-400 hover:text-white"><Phone size={14} /> +49 176 30 47 5008</a><span className="flex items-center gap-2 text-slate-400"><MapPin size={14} /> 38551 Ribbesbüttel</span><a href="https://peschyras.com" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-slate-400 hover:text-white"><ArrowUpRight size={14} /> peschyras.com</a><a href="mailto:mail@andre-peschyras.de" className="flex items-center gap-2 text-slate-400 hover:text-white"><Mail size={14} /> E-Mail senden</a></div>
         </div>
         <div className="flex flex-col gap-3 pt-7 text-xs text-slate-600 sm:flex-row sm:items-center sm:justify-between"><p>© {new Date().getFullYear()} André Peschyras</p><p>Entwickelt mit React · TypeScript · Tailwind CSS</p></div>

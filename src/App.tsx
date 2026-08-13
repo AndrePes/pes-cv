@@ -66,6 +66,27 @@ const interests = [
   { icon: Code2, label: 'Coding for good' },
 ]
 
+const freelanceServices = [
+  {
+    icon: Camera,
+    title: 'Fotografie',
+    description: 'Authentische Bildwelten für Unternehmen, Produkte und persönliche Marken – von der Konzeption bis zur finalen Auswahl.',
+    tags: ['Businessporträts', 'Produktfotografie', 'Reportage'],
+  },
+  {
+    icon: Palette,
+    title: 'Grafikdesign',
+    description: 'Klar gestaltete visuelle Kommunikation, die technische Inhalte verständlich macht und Marken konsistent weiterentwickelt.',
+    tags: ['Corporate Design', 'Digital & Print', 'Social Media'],
+  },
+  {
+    icon: Code2,
+    title: 'Web & digitale Inhalte',
+    description: 'Moderne Webauftritte und digitale Inhalte, bei denen Gestaltung, technische Umsetzung und Nutzererlebnis zusammenspielen.',
+    tags: ['Webdesign', 'React', 'Content'],
+  },
+]
+
 const profiles = [
   {
     icon: Link,

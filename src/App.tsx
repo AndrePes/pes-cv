@@ -165,7 +165,7 @@ function App() {
             {nav.map(([label, target]) => <a key={target} href={`#${target}`} className="text-sm text-slate-400 transition hover:text-white">{label}</a>)}
           </nav>
           <div className="flex items-center gap-3">
-            <a href="/assets/cv_de_2026.pdf" download className="hidden items-center gap-2 rounded-full border border-white/10 px-4 py-2 text-xs font-semibold text-white transition hover:border-blue-400/50 hover:bg-blue-500/10 sm:flex">
+            <a href="/assets/cv_de_2026_v2.pdf" download className="hidden items-center gap-2 rounded-full border border-white/10 px-4 py-2 text-xs font-semibold text-white transition hover:border-blue-400/50 hover:bg-blue-500/10 sm:flex">
               <Download size={14} /> PDF CV
             </a>
             <button onClick={() => setMenuOpen(!menuOpen)} className="grid h-10 w-10 place-items-center rounded-full border border-white/10 text-white lg:hidden" aria-label="Menü öffnen">

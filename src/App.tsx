@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import {
   ArrowDown, ArrowUpRight, BrainCircuit, Camera, Check, Code2,
   Download, GitFork, Globe2, Link, Mail, MapPin, Menu, Mountain,
-  Palette, Phone, X, Zap,
+  Palette, Phone, X,
 } from 'lucide-react'
 
 type Experience = {
@@ -18,7 +18,7 @@ const experience: Experience[] = [
     period: '07/2024 — heute',
     company: 'Concircle Consulting GmbH',
     role: 'Software Engineer',
-    description: 'Entwicklung kundenspezifischer Erweiterungen und Integrationen für SAP Digital Manufacturing. Konzeption von Shopfloor-, Manufacturing- und Enterprise-Integrationen, technische Zielarchitekturen sowie Mitarbeit an den Forschungsprojekten GRROW und BePro-CEND.',
+    description: 'Entwicklung kundenspezifischer Erweiterungen und Integrationen für SAP Digital Manufacturing. SAP-DM-Customizing, POD-Design, JavaScript/Node.js/TypeScript und SAP UI5 in Cloud Foundry sowie EDC-Installation und Deployment. Dazu Schnittstellen- und Architekturdokumentation, Maschinenanbindung und technische Kundenabstimmung.',
     current: true,
   },
   {
@@ -31,7 +31,7 @@ const experience: Experience[] = [
     period: '01/2020 — 10/2023',
     company: 'Bühler GmbH · Braunschweig',
     role: 'IoT Specialist',
-    description: 'Konzeption, Entwicklung und Rollout IoT-basierter Monitoringlösungen für Verbrauchsdaten und Industriemaschinen. Entwicklung eines internen IoT-Grundkurses sowie Industrial-IoT-Lösungen auf Basis von Azure IoT, MQTT und OPC UA.',
+    description: 'Konzeption, Entwicklung und Rollout IoT-basierter Monitoringlösungen für Verbrauchsdaten und Industriemaschinen. Planung und Betreuung von Smart-Metering-Lösungen für Strom, Gas und Wasser, Entwicklung eines internen IoT-Grundkurses sowie Industrial-IoT-Lösungen auf Basis von Azure IoT, MQTT und OPC UA.',
   },
   {
     period: '04/2013 — 12/2019',
@@ -42,6 +42,8 @@ const experience: Experience[] = [
 ]
 
 const skills = [
+  { name: 'Applied AI & Agents', detail: 'ChatGPT · Microsoft Foundry · Agenten' },
+  { name: 'AI-assisted Development', detail: 'Codex · Claude Code · Kimi · OpenCode' },
   { name: 'C# / .NET', detail: 'Desktop- & Enterprise-Anwendungen' },
   { name: 'Python', detail: 'Automation, IoT & Datenverarbeitung' },
   { name: 'C / C++', detail: 'Embedded Systems & hardwarenahe Entwicklung' },
@@ -51,8 +53,9 @@ const skills = [
 ]
 
 const domains = [
+  ['AI Automation', 'n8n · OpenClaw Gateway · OpenRouter · Ollama'],
   ['SAP Applications', 'Digital Manufacturing Cloud · BTP · S/4HANA'],
-  ['Tools & AI', 'Git · GitHub · Jira · Confluence · Codex · GitHub Copilot · Claude Code'],
+  ['AI Implementation', 'Agentische Workflows · KI-gestützte Web-Apps · EU AI Act'],
   ['Industrial IoT & OT', 'MQTT · OPC UA · Modbus · CAN-Bus · LoRa'],
   ['Automation', 'Siemens S7-1200 · TIA Portal'],
   ['Embedded Systems', 'ESP32 · Raspberry Pi · Arduino'],
@@ -60,6 +63,11 @@ const domains = [
 ]
 
 const projects = [
+  {
+    title: 'AI Agents & Automation Lab',
+    type: 'Applied AI',
+    description: 'Praktische Entwicklung und Erprobung von KI-Agenten mit ChatGPT und Microsoft Foundry sowie KI-gestützter Webentwicklung mit Codex, Claude Code und Kimi. Ergänzend Erfahrungen mit OpenCode, OpenRouter, Ollama, OpenClaw Gateway und n8n.',
+  },
   {
     title: 'Medical Device Monitoring',
     type: 'Freelance',
@@ -144,7 +152,7 @@ const profiles = [
 ]
 
 const nav = [
-  ['Über mich', 'about'], ['Erfahrung', 'experience'], ['Skills', 'skills'], ['Projekte', 'projects'], ['Profile', 'profiles'], ['Kontakt', 'contact'],
+  ['Über mich', 'about'], ['AI-Fokus', 'ai'], ['Erfahrung', 'experience'], ['Skills', 'skills'], ['Projekte', 'projects'], ['Profile', 'profiles'], ['Kontakt', 'contact'],
 ]
 
 function App() {
@@ -207,17 +215,17 @@ function App() {
                 <span className="relative flex h-2.5 w-2.5"><span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-70" /><span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400" /></span>
                 <span className="text-xs font-semibold uppercase tracking-[.22em] text-slate-400">Offen für Festanstellung & Freelance-Projekte</span>
               </div>
-              <p className="eyebrow mb-4">Software Engineer · Industrial IoT · Solution Architecture</p>
+              <p className="eyebrow mb-4">Applied AI · Software Engineering · Industrial IoT</p>
               <h1 className="max-w-3xl text-[clamp(3.4rem,8vw,7rem)] font-semibold leading-[.88] tracking-[-.065em] text-white">
-                Technik, die<br />
-                <span className="bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-600 bg-clip-text text-transparent">etwas bewegt.</span>
+                KI, die<br />
+                <span className="bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-600 bg-clip-text text-transparent">ins Tun kommt.</span>
               </h1>
               <p className="mt-8 max-w-2xl text-lg leading-relaxed text-slate-400 sm:text-xl">
-                Ich bin André — Software Engineer mit langjähriger Erfahrung an der Schnittstelle von <span className="text-white">Industrial IoT, Manufacturing, Cloud und Enterprise-Systemen</span>. Mein Fokus liegt auf integrierten Lösungen vom Shopfloor und Embedded Device bis zur Cloud- und SAP-Plattform — in Festanstellung oder im Projekt. Freelance unterstütze ich außerdem mit <span className="text-white">Fotografie, Videografie und Grafikdesign</span>.
+                Ich bin André — Software Engineer mit praktischer Erfahrung in <span className="text-white">angewandter KI, KI-Agenten und KI-gestützter Webentwicklung</span>. Ich verbinde moderne AI-Tools mit meinem Hintergrund in Industrial IoT, Manufacturing, Cloud und Enterprise-Integration — von der Idee bis zur nutzbaren Lösung.
               </p>
               <div className="mt-10 flex flex-wrap gap-4">
-                <a href="#experience" className="group flex items-center gap-3 rounded-full bg-blue-500 px-6 py-3.5 text-sm font-semibold text-white shadow-glow transition hover:bg-blue-400">
-                  Meine Erfahrung <ArrowDown size={16} className="transition group-hover:translate-y-0.5" />
+                <a href="#ai" className="group flex items-center gap-3 rounded-full bg-blue-500 px-6 py-3.5 text-sm font-semibold text-white shadow-glow transition hover:bg-blue-400">
+                  Mein AI-Fokus <ArrowDown size={16} className="transition group-hover:translate-y-0.5" />
                 </a>
                 <a href="#freelance" className="flex items-center gap-3 rounded-full border border-white/10 px-6 py-3.5 text-sm font-semibold text-white transition hover:border-white/25 hover:bg-white/5">
                   Freelance-Angebot <ArrowUpRight size={16} />
@@ -235,14 +243,14 @@ function App() {
                   <div className="flex items-end justify-between gap-5">
                     <div><p className="text-xl font-semibold text-white">André Peschyras</p><p className="mt-1 text-sm text-slate-400">Ribbesbüttel · Germany</p></div>
                     <div className="flex gap-2">
-                      <a href="https://github.com/peschyras" target="_blank" rel="noreferrer" aria-label="GitHub" className="grid h-10 w-10 place-items-center rounded-full border border-white/10 bg-white/5 text-white transition hover:bg-blue-500"><GitFork size={17} /></a>
+                      <a href="https://github.com/AndrePes" target="_blank" rel="noreferrer" aria-label="GitHub" className="grid h-10 w-10 place-items-center rounded-full border border-white/10 bg-white/5 text-white transition hover:bg-blue-500"><GitFork size={17} /></a>
                       <a href="https://www.linkedin.com/in/andre-peschyras" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="grid h-10 w-10 place-items-center rounded-full border border-white/10 bg-white/5 text-white transition hover:bg-blue-500"><Link size={17} /></a>
                     </div>
                   </div>
                 </div>
               </div>
               <div className="absolute -left-7 top-12 hidden rounded-2xl border border-white/10 bg-[#0b1220]/90 p-4 shadow-xl backdrop-blur-xl sm:block">
-                <div className="flex items-center gap-3"><span className="grid h-9 w-9 place-items-center rounded-xl bg-blue-500/15 text-blue-400"><Zap size={17} /></span><div><p className="text-[10px] uppercase tracking-wider text-slate-500">Fokus</p><p className="text-sm font-semibold text-white">Industrial IoT</p></div></div>
+                 <div className="flex items-center gap-3"><span className="grid h-9 w-9 place-items-center rounded-xl bg-blue-500/15 text-blue-400"><BrainCircuit size={17} /></span><div><p className="text-[10px] uppercase tracking-wider text-slate-500">Fokus</p><p className="text-sm font-semibold text-white">Applied AI</p></div></div>
               </div>
             </div>
           </div>
@@ -256,6 +264,25 @@ function App() {
               <div className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.08] sm:grid-cols-3">
                 {[['13+', 'Jahre Tech-Erfahrung'], ['6', 'Kerntechnologien'], ['360°', 'IT & Produktion']].map(([n, label]) => <div key={label} className="bg-panel p-6"><p className="text-3xl font-semibold text-white">{n}</p><p className="mt-2 text-xs leading-snug text-slate-500">{label}</p></div>)}
               </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="ai" className="relative overflow-hidden border-b border-white/[0.06] py-24 sm:py-32">
+          <div className="absolute -right-40 top-8 h-96 w-96 rounded-full bg-cyan-500/10 blur-[120px]" />
+          <div className="relative mx-auto grid max-w-7xl gap-12 px-6 lg:grid-cols-[.8fr_1.2fr] lg:px-10">
+            <div><p className="eyebrow mb-4">Aktueller Schwerpunkt</p><h2 className="section-heading">AI praktisch<br />in die Anwendung bringen.</h2></div>
+            <div>
+              <p className="text-2xl font-medium leading-snug tracking-tight text-slate-200 sm:text-3xl">Ich nutze KI nicht nur als Thema, sondern als Werkzeug für Entwicklung, Automatisierung und bessere Arbeitsabläufe.</p>
+              <div className="mt-10 grid gap-3 sm:grid-cols-2">
+                {[
+                  ['Agenten', 'Erstellen und Erproben von KI-Agenten mit ChatGPT und Microsoft Foundry.'],
+                  ['AI Development', 'Web-Apps mit Codex, Claude Code und Kimi entwickeln und iterativ verbessern.'],
+                  ['Automation', 'n8n und OpenClaw für praktische Automatisierungs- und Integrationsszenarien einsetzen.'],
+                  ['Local AI', 'Erste Erfahrungen mit lokaler LLM-Bereitstellung über Ollama sowie OpenCode und OpenRouter.'],
+                ].map(([title, description]) => <div key={title} className="card p-5"><p className="font-semibold text-white">{title}</p><p className="mt-2 text-sm leading-relaxed text-slate-400">{description}</p></div>)}
+              </div>
+              <p className="mt-6 text-xs leading-relaxed text-slate-500">Praxisnah und umsetzungsorientiert: mit Blick auf sinnvolle Use Cases, Integration und verantwortungsvollen Einsatz. Kein Anspruch auf Forschung oder Modelltraining.</p>
             </div>
           </div>
         </section>
@@ -287,7 +314,7 @@ function App() {
             <div className="mb-14"><p className="eyebrow mb-4">Kompetenzen</p><h2 className="section-heading">Technischer Werkzeugkasten.</h2></div>
             <div className="grid gap-5 lg:grid-cols-2">
               <div className="card p-7 sm:p-9">
-                <div className="mb-8 flex items-center gap-3"><span className="grid h-10 w-10 place-items-center rounded-xl bg-blue-500/10 text-blue-400"><Code2 size={19} /></span><h3 className="font-semibold text-white">Sprachen & Plattformen</h3></div>
+                 <div className="mb-8 flex items-center gap-3"><span className="grid h-10 w-10 place-items-center rounded-xl bg-blue-500/10 text-blue-400"><Code2 size={19} /></span><h3 className="font-semibold text-white">AI, Sprachen & Plattformen</h3></div>
                 <div className="grid gap-3 sm:grid-cols-2">{skills.map(skill => <div key={skill.name} className="rounded-xl border border-white/[0.06] bg-white/[0.02] p-4 transition hover:border-blue-400/20"><div className="mb-2 flex items-center gap-2"><Check size={13} className="shrink-0 text-blue-400" /><p className="text-sm font-semibold text-slate-200">{skill.name}</p></div><p className="text-xs leading-relaxed text-slate-500">{skill.detail}</p></div>)}</div>
               </div>
               <div className="card p-7 sm:p-9">
@@ -300,9 +327,9 @@ function App() {
 
         <section id="projects" className="py-24 sm:py-32">
           <div className="mx-auto max-w-7xl px-6 lg:px-10">
-            <div className="mb-14 grid gap-6 lg:grid-cols-[1fr_.75fr] lg:items-end">
+              <div className="mb-14 grid gap-6 lg:grid-cols-[1fr_.75fr] lg:items-end">
               <div><p className="eyebrow mb-4">Eigene & Freelance-Projekte</p><h2 className="section-heading">Ideen in funktionierende<br />Produkte übersetzt.</h2></div>
-              <p className="max-w-xl text-sm leading-relaxed text-slate-400 lg:justify-self-end">Ausgewählte Anwendungen zwischen Medizintechnik, Veranstaltungsmanagement und Sport — eigenständig konzipiert und umgesetzt.</p>
+               <p className="max-w-xl text-sm leading-relaxed text-slate-400 lg:justify-self-end">Ausgewählte Anwendungen von praktischer AI-Erprobung bis zu Medizintechnik, Veranstaltungsmanagement und Sport — eigenständig konzipiert und umgesetzt.</p>
             </div>
             <div className="grid gap-5 lg:grid-cols-3">
               {projects.map(project => <article key={project.title} className="card flex flex-col p-7 transition duration-300 hover:-translate-y-1 hover:border-blue-400/25 hover:bg-blue-500/[.035] sm:p-8"><span className="w-fit rounded-full bg-blue-500/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-blue-400">{project.type}</span><h3 className="mt-5 text-xl font-semibold text-white">{project.title}</h3><p className="mt-3 leading-relaxed text-slate-400">{project.description}</p></article>)}
@@ -335,7 +362,7 @@ function App() {
 
         <section className="py-24 sm:py-32">
           <div className="mx-auto grid max-w-7xl gap-16 px-6 lg:grid-cols-2 lg:px-10">
-            <div><p className="eyebrow mb-4">Ausbildung</p><h2 className="section-heading mb-10">Fundament.</h2><div className="space-y-8 border-l border-white/10 pl-7"><div><p className="text-xs font-mono text-blue-400">08/2005 — 01/2009</p><h3 className="mt-2 text-lg font-semibold text-white">Ausbildung zum Industriemechaniker</h3><p className="mt-1 text-sm text-slate-500">Bildungswerkstatt Georgsmarienhütte</p><p className="mt-3 leading-relaxed text-slate-400">Schwerpunkt Produktionstechnik, Maschinen- und Anlagenbau sowie Instandhaltung.</p></div></div></div>
+             <div><p className="eyebrow mb-4">Ausbildung & Weiterbildung</p><h2 className="section-heading mb-10">Fundament.</h2><div className="space-y-8 border-l border-white/10 pl-7"><div><p className="text-xs font-mono text-blue-400">08/2005 — 01/2009</p><h3 className="mt-2 text-lg font-semibold text-white">Ausbildung zum Industriemechaniker</h3><p className="mt-1 text-sm text-slate-500">Bildungswerkstatt Georgsmarienhütte · IHK-Abschluss</p><p className="mt-3 leading-relaxed text-slate-400">Schwerpunkt Produktionstechnik, Maschinen- und Anlagenbau sowie Instandhaltung.</p></div><div><p className="text-xs font-mono text-blue-400">Abgeschlossen</p><h3 className="mt-2 text-lg font-semibold text-white">EU AI Act</h3><p className="mt-3 leading-relaxed text-slate-400">Online-Weiterbildung zu den Grundlagen des EU AI Act mit Zertifikat.</p></div></div></div>
             <div><p className="eyebrow mb-4">Abseits des Codes</p><h2 className="section-heading mb-10">Interessen.</h2><div className="grid grid-cols-2 gap-3">{interests.map(({icon: Icon, label}) => <div key={label} className="card group flex min-h-32 flex-col justify-between p-5 transition hover:border-blue-400/20 hover:bg-blue-500/[.04]"><Icon size={24} className="text-blue-400 transition group-hover:scale-110" /><p className="text-sm font-medium text-slate-300">{label}</p></div>)}</div></div>
           </div>
         </section>
@@ -381,14 +408,14 @@ function App() {
         <section id="contact" className="px-4 pb-4 sm:px-6 sm:pb-6">
           <div className="relative mx-auto max-w-[1480px] overflow-hidden rounded-[2rem] border border-blue-400/20 bg-blue-600 px-6 py-20 text-center shadow-[0_0_100px_rgba(37,99,235,.18)] sm:py-28">
             <div className="absolute -left-24 -top-24 h-72 w-72 rounded-full border border-white/10" /><div className="absolute -right-24 -bottom-32 h-96 w-96 rounded-full border border-white/10" />
-            <div className="relative mx-auto max-w-3xl"><p className="mb-5 text-xs font-semibold uppercase tracking-[.22em] text-blue-100">Festanstellung oder Freelance</p><h2 className="text-4xl font-semibold tracking-tight text-white sm:text-6xl">Bereit, gemeinsam etwas zu bewegen?</h2><p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-blue-100">Ob langfristige Position im Team, technisches Projekt oder kreativer Auftrag in Fotografie, Videografie und Grafikdesign — ich freue mich auf Ihre Anfrage.</p><button onClick={copyEmail} className="mx-auto mt-9 flex items-center gap-3 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-blue-700 transition hover:scale-[1.02]">{copied ? <><Check size={17} /> E-Mail kopiert</> : <><Mail size={17} /> mail@andre-peschyras.de</>}</button></div>
+             <div className="relative mx-auto max-w-3xl"><p className="mb-5 text-xs font-semibold uppercase tracking-[.22em] text-blue-100">Applied AI · Software Engineering · Industrial IoT</p><h2 className="text-4xl font-semibold tracking-tight text-white sm:text-6xl">Lassen wir AI praktisch werden.</h2><p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-blue-100">Ob AI-Integration, Agenten und Automatisierung, industrielle Software oder ein technisches Projekt: Ich freue mich auf den Austausch über eine konkrete Herausforderung.</p><button onClick={copyEmail} className="mx-auto mt-9 flex items-center gap-3 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-blue-700 transition hover:scale-[1.02]">{copied ? <><Check size={17} /> E-Mail kopiert</> : <><Mail size={17} /> mail@andre-peschyras.de</>}</button></div>
           </div>
         </section>
       </main>
 
       <footer className="mx-auto max-w-7xl px-6 py-12 lg:px-10">
         <div className="flex flex-col justify-between gap-8 border-b border-white/[0.06] pb-10 md:flex-row">
-          <div><p className="text-lg font-semibold text-white">André Peschyras</p><p className="mt-2 text-sm text-slate-500">Software Engineer · Industrial IoT · Systems & Solution Architecture</p></div>
+           <div><p className="text-lg font-semibold text-white">André Peschyras</p><p className="mt-2 text-sm text-slate-500">Applied AI · Software Engineering · Industrial IoT</p></div>
           <div className="grid gap-3 text-sm sm:grid-cols-2 sm:gap-x-10"><a href="tel:+4917630475008" className="flex items-center gap-2 text-slate-400 hover:text-white"><Phone size={14} /> +49 176 30 47 5008</a><span className="flex items-center gap-2 text-slate-400"><MapPin size={14} /> 38551 Ribbesbüttel</span><a href="https://peschyras.com" target="_blank" rel="noreferrer" className="flex items-center gap-2 text-slate-400 hover:text-white"><ArrowUpRight size={14} /> peschyras.com</a><a href="mailto:mail@andre-peschyras.de" className="flex items-center gap-2 text-slate-400 hover:text-white"><Mail size={14} /> E-Mail senden</a></div>
         </div>
         <div className="flex flex-col gap-3 pt-7 text-xs text-slate-600 sm:flex-row sm:items-center sm:justify-between"><p>© {new Date().getFullYear()} André Peschyras</p><p>Entwickelt mit React · TypeScript · Tailwind CSS</p></div>

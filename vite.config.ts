@@ -1,6 +1,6 @@
 import { loadEnv, defineConfig, type Plugin } from 'vite'
 import react from '@vitejs/plugin-react'
-import chatHandler from './api/chat.ts'
+import { handleChatRequest } from './api/chat.ts'
 
 const localChatApi = (): Plugin => ({
   name: 'local-chat-api',
@@ -21,7 +21,7 @@ const localChatApi = (): Plugin => ({
             headers,
             body: Buffer.concat(chunks).toString('utf8'),
           })
-          const webResponse = await chatHandler(webRequest)
+          const webResponse = await handleChatRequest(webRequest)
           response.statusCode = webResponse.status
           webResponse.headers.forEach((value, name) => response.setHeader(name, value))
           response.end(await webResponse.text())

@@ -1,4 +1,5 @@
 import OpenAI from 'openai'
+import type { IncomingMessage, ServerResponse } from 'node:http'
 
 type RateEntry = { count: number; resetAt: number }
 type RequestLike = {
@@ -38,7 +39,7 @@ const isAllowedOrigin = (request: RequestLike) => {
   return getHeader(request, 'origin') === configuredOrigin
 }
 
-export default async function handler(request: RequestLike) {
+export async function handleChatRequest(request: RequestLike) {
   if (request.method !== 'POST') return json({ error: 'Methode nicht erlaubt.' }, 405)
   if (!isAllowedOrigin(request)) return json({ error: 'Anfrage nicht erlaubt.' }, 403)
   const contentLength = Number(getHeader(request, 'content-length') || 0)
@@ -75,7 +76,7 @@ export default async function handler(request: RequestLike) {
   if (!apiKey || !vectorStoreId) return json({ error: 'Der Chat ist derzeit nicht konfiguriert.' }, 503)
 
   try {
-    const openai = new OpenAI({ apiKey })
+    const openai = new OpenAI({ apiKey, timeout: 20_000, maxRetries: 1 })
     const moderation = await openai.moderations.create({ model: 'omni-moderation-latest', input: question })
     if (moderation.results[0]?.flagged) return json({ error: 'Diese Frage kann ich nicht beantworten.' }, 400)
 
@@ -103,4 +104,33 @@ Regeln:
     console.error('OpenAI chat request failed', error)
     return json({ error: 'Der Chat ist momentan nicht erreichbar. Bitte versuche es später erneut.' }, 502)
   }
+}
+
+type VercelRequest = IncomingMessage & { body?: unknown }
+
+const readRequestBody = (request: VercelRequest) => new Promise<unknown>((resolve, reject) => {
+  const chunks: Buffer[] = []
+  request.on('data', chunk => chunks.push(Buffer.from(chunk)))
+  request.on('end', () => {
+    const rawBody = Buffer.concat(chunks).toString('utf8')
+    if (!rawBody) return resolve(undefined)
+    try {
+      resolve(JSON.parse(rawBody))
+    } catch {
+      resolve(rawBody)
+    }
+  })
+  request.on('error', reject)
+})
+
+export default async function handler(request: VercelRequest, response: ServerResponse) {
+  const body = request.body === undefined ? await readRequestBody(request) : request.body
+  const result = await handleChatRequest({
+    method: request.method,
+    headers: request.headers,
+    body,
+  })
+  response.statusCode = result.status
+  result.headers.forEach((value, name) => response.setHeader(name, value))
+  response.end(await result.text())
 }

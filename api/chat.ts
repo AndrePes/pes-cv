@@ -1,6 +1,12 @@
 import OpenAI from 'openai'
 
 type RateEntry = { count: number; resetAt: number }
+type RequestLike = {
+  method?: string
+  headers: Headers | Record<string, string | string[] | undefined>
+  body?: unknown
+  json?: () => Promise<unknown>
+}
 
 const rateLimit = new Map<string, RateEntry>()
 const WINDOW_MS = 60_000
@@ -13,21 +19,29 @@ const json = (body: Record<string, string>, status: number) =>
     headers: { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' },
   })
 
-const getClientIp = (request: Request) => {
-  const forwardedFor = request.headers.get('x-forwarded-for')
-  return forwardedFor?.split(',')[0]?.trim() || request.headers.get('x-real-ip') || 'unknown'
+const getHeader = (request: RequestLike, name: string) => {
+  const headers = request.headers
+  if (typeof (headers as Headers).get === 'function') return (headers as Headers).get(name) || ''
+  const objectHeaders = headers as Record<string, string | string[] | undefined>
+  const value = objectHeaders[name.toLowerCase()] ?? objectHeaders[name]
+  return Array.isArray(value) ? value[0] || '' : value || ''
 }
 
-const isAllowedOrigin = (request: Request) => {
+const getClientIp = (request: RequestLike) => {
+  const forwardedFor = getHeader(request, 'x-forwarded-for')
+  return forwardedFor.split(',')[0]?.trim() || getHeader(request, 'x-real-ip') || 'unknown'
+}
+
+const isAllowedOrigin = (request: RequestLike) => {
   const configuredOrigin = process.env.APP_ORIGIN
   if (!configuredOrigin) return true
-  return request.headers.get('origin') === configuredOrigin
+  return getHeader(request, 'origin') === configuredOrigin
 }
 
-export default async function handler(request: Request) {
+export default async function handler(request: RequestLike) {
   if (request.method !== 'POST') return json({ error: 'Methode nicht erlaubt.' }, 405)
   if (!isAllowedOrigin(request)) return json({ error: 'Anfrage nicht erlaubt.' }, 403)
-  const contentLength = Number(request.headers.get('content-length') || 0)
+  const contentLength = Number(getHeader(request, 'content-length') || 0)
   if (contentLength > 12_000) return json({ error: 'Die Anfrage ist zu groß.' }, 413)
 
   const clientIp = getClientIp(request)
@@ -45,7 +59,8 @@ export default async function handler(request: Request) {
 
   let body: unknown
   try {
-    body = await request.json()
+    body = typeof request.json === 'function' ? await request.json() : request.body
+    if (typeof body === 'string') body = JSON.parse(body)
   } catch {
     return json({ error: 'Ungültige Anfrage.' }, 400)
   }

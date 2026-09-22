@@ -4,6 +4,7 @@ import {
   Download, GitFork, Globe2, Link, Mail, MapPin, Menu, Mountain,
   Palette, Phone, Send, X,
 } from 'lucide-react'
+import { Analytics } from '@vercel/analytics/react'
 
 type Experience = {
   period: string
@@ -475,6 +476,7 @@ function App() {
         </div>
         <div className="flex flex-col gap-3 pt-7 text-xs text-slate-600 sm:flex-row sm:items-center sm:justify-between"><p>© {new Date().getFullYear()} André Peschyras</p><p>Entwickelt mit React · TypeScript · Tailwind CSS</p></div>
       </footer>
+      <Analytics />
     </div>
   )
 }

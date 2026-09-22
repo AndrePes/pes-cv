@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, type FormEvent } from 'react'
 import {
   ArrowDown, ArrowUpRight, BrainCircuit, Camera, Check, Code2,
   Download, GitFork, Globe2, Link, Mail, MapPin, Menu, Mountain,
-  Palette, Phone, X,
+  Palette, Phone, Send, X,
 } from 'lucide-react'
 
 type Experience = {
@@ -11,6 +11,11 @@ type Experience = {
   role: string
   description: string
   current?: boolean
+}
+
+type ChatMessage = {
+  role: 'user' | 'assistant'
+  content: string
 }
 
 const experience: Experience[] = [
@@ -159,6 +164,10 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [copied, setCopied] = useState(false)
   const [scrollProgress, setScrollProgress] = useState(0)
+  const [question, setQuestion] = useState('')
+  const [chatMessages, setChatMessages] = useState<ChatMessage[]>([])
+  const [chatLoading, setChatLoading] = useState(false)
+  const [chatError, setChatError] = useState('')
 
   useEffect(() => {
     const onScroll = () => {
@@ -174,6 +183,32 @@ function App() {
     await navigator.clipboard.writeText('mail@andre-peschyras.de')
     setCopied(true)
     window.setTimeout(() => setCopied(false), 1800)
+  }
+
+  const askChatbot = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    const trimmedQuestion = question.trim()
+    if (!trimmedQuestion || chatLoading || trimmedQuestion.length > 1000) return
+
+    setQuestion('')
+    setChatError('')
+    setChatMessages(messages => [...messages, { role: 'user', content: trimmedQuestion }])
+    setChatLoading(true)
+
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ question: trimmedQuestion }),
+      })
+      const data = await response.json() as { answer?: string; error?: string }
+      if (!response.ok || !data.answer) throw new Error(data.error || 'Die Antwort konnte nicht geladen werden.')
+      setChatMessages(messages => [...messages, { role: 'assistant', content: data.answer || '' }])
+    } catch (error) {
+      setChatError(error instanceof Error ? error.message : 'Die Antwort konnte nicht geladen werden.')
+    } finally {
+      setChatLoading(false)
+    }
   }
 
   return (
@@ -230,6 +265,20 @@ function App() {
                 <a href="#freelance" className="flex items-center gap-3 rounded-full border border-white/10 px-6 py-3.5 text-sm font-semibold text-white transition hover:border-white/25 hover:bg-white/5">
                   Freelance-Angebot <ArrowUpRight size={16} />
                 </a>
+              </div>
+              <div className="mt-8 max-w-2xl rounded-2xl border border-blue-400/20 bg-panel/80 p-4 shadow-[0_0_45px_rgba(41,151,255,.08)] backdrop-blur-sm">
+                <div className="mb-3 flex items-center gap-2 text-sm font-semibold text-white"><BrainCircuit size={16} className="text-blue-400" /> Frag mich zu meinem Profil</div>
+                <form onSubmit={askChatbot} className="flex gap-2">
+                  <label htmlFor="hero-chat-question" className="sr-only">Stelle mir eine Frage</label>
+                  <input id="hero-chat-question" value={question} onChange={event => setQuestion(event.target.value)} maxLength={1000} disabled={chatLoading} placeholder="Stelle mir eine Frage" className="min-w-0 flex-1 rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-white outline-none placeholder:text-slate-500 focus:border-blue-400/60 disabled:opacity-60" />
+                  <button type="submit" disabled={chatLoading || !question.trim()} aria-label="Frage senden" className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-blue-500 text-white transition hover:bg-blue-400 disabled:cursor-not-allowed disabled:opacity-50"><Send size={17} /></button>
+                </form>
+                <p className="mt-2 text-[11px] text-slate-500">Antworten basieren auf hinterlegten CV-, Zertifikats- und Zeugnisunterlagen. Deine Frage wird zur Verarbeitung an OpenAI übertragen.</p>
+                {(chatMessages.length > 0 || chatLoading || chatError) && <div className="mt-4 max-h-64 space-y-3 overflow-y-auto border-t border-white/[0.08] pt-4" aria-live="polite">
+                  {chatMessages.map((message, index) => <div key={`${message.role}-${index}`} className={message.role === 'user' ? 'ml-8 rounded-xl bg-blue-500/15 px-4 py-3 text-sm text-blue-50' : 'mr-8 rounded-xl bg-white/[0.05] px-4 py-3 text-sm leading-relaxed text-slate-300'}><span className="mb-1 block text-[10px] font-semibold uppercase tracking-wider text-slate-500">{message.role === 'user' ? 'Du' : 'AndréBot'}</span>{message.content}</div>)}
+                  {chatLoading && <div className="mr-8 rounded-xl bg-white/[0.05] px-4 py-3 text-sm text-slate-400">AndréBot denkt nach ...</div>}
+                  {chatError && <p className="rounded-xl border border-red-400/20 bg-red-400/10 px-4 py-3 text-sm text-red-200">{chatError}</p>}
+                </div>}
               </div>
             </div>
 

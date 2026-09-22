@@ -31,6 +31,14 @@ APP_ORIGIN=https://deine-produktive-domain.example
 
 `APP_ORIGIN` muss exakt der öffentlichen Origin entsprechen. Environment Variables nur für Production/Preview anlegen, nicht committen. Lokal kann eine nicht versionierte `.env.local` verwendet werden.
 
+Für den lokalen Vite-Server muss `APP_ORIGIN` entweder fehlen oder auf `http://localhost:5173` gesetzt werden:
+
+```text
+APP_ORIGIN=http://localhost:5173
+```
+
+Die lokale Vite-Konfiguration stellt `/api/chat` als Dev-Middleware bereit und lädt dafür die Werte aus `.env.local`. Nach Änderungen an `.env.local` den Vite-Server neu starten.
+
 ## 4. Sicherheitsmaßnahmen
 
 - Die Route akzeptiert nur `POST` und prüft die Origin.

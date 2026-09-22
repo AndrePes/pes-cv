@@ -201,7 +201,13 @@ function App() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ question: trimmedQuestion }),
       })
-      const data = await response.json() as { answer?: string; error?: string }
+      const responseText = await response.text()
+      let data: { answer?: string; error?: string } = {}
+      try {
+        data = JSON.parse(responseText) as { answer?: string; error?: string }
+      } catch {
+        throw new Error(`Chat-Service antwortet nicht korrekt (HTTP ${response.status}).`)
+      }
       if (!response.ok || !data.answer) throw new Error(data.error || 'Die Antwort konnte nicht geladen werden.')
       setChatMessages(messages => [...messages, { role: 'assistant', content: data.answer || '' }])
     } catch (error) {

@@ -91,6 +91,24 @@ const projects = [
   },
 ]
 
+const certifications = [
+  {
+    title: 'Foundations of AI and Machine Learning',
+    provider: 'Microsoft',
+    image: '/assets/Microsoft_Foundations_of_AI_and_Machine_Learning.jpeg',
+  },
+  {
+    title: 'Workflow Automation with n8n: Logic, Data & Error Handling',
+    provider: 'LearnKartS',
+    image: '/assets/Workflow_Automation_with_n8n.jpeg',
+  },
+  {
+    title: 'AI Fundamentals',
+    provider: 'Google',
+    image: '/assets/Google_AI_Fundamentals.jpeg',
+  },
+]
+
 const interests = [
   { icon: Camera, label: 'Fotografie' },
   { icon: Palette, label: 'Grafik & Film' },
@@ -336,12 +354,31 @@ function App() {
                   ['AI Development', 'Web-Apps mit Codex, Claude Code und Kimi entwickeln und iterativ verbessern.'],
                   ['Automation', 'n8n und OpenClaw für praktische Automatisierungs- und Integrationsszenarien einsetzen.'],
                   ['Local AI', 'Erste Erfahrungen mit lokaler LLM-Bereitstellung über Ollama sowie OpenCode und OpenRouter.'],
-                ].map(([title, description]) => <div key={title} className="card p-5"><p className="font-semibold text-white">{title}</p><p className="mt-2 text-sm leading-relaxed text-slate-400">{description}</p></div>)}
-              </div>
-              <p className="mt-6 text-xs leading-relaxed text-slate-500">Praxisnah und umsetzungsorientiert: mit Blick auf sinnvolle Use Cases, Integration und verantwortungsvollen Einsatz. Kein Anspruch auf Forschung oder Modelltraining.</p>
-            </div>
-          </div>
-        </section>
+               ].map(([title, description]) => <div key={title} className="card p-5"><p className="font-semibold text-white">{title}</p><p className="mt-2 text-sm leading-relaxed text-slate-400">{description}</p></div>)}
+               </div>
+               <p className="mt-6 text-xs leading-relaxed text-slate-500">Praxisnah und umsetzungsorientiert: mit Blick auf sinnvolle Use Cases, Integration und verantwortungsvollen Einsatz. Kein Anspruch auf Forschung oder Modelltraining.</p>
+               <div className="mt-14">
+                 <div className="mb-5 flex items-end justify-between gap-4">
+                   <div><p className="eyebrow mb-2">Nachweise</p><h3 className="text-xl font-semibold text-white">AI-Zertifikate</h3></div>
+                   <p className="hidden text-right text-xs text-slate-500 sm:block">Ausgewählte Weiterbildungen</p>
+                 </div>
+                 <div className="grid gap-4 md:grid-cols-3">
+                   {certifications.map(certification => (
+                     <article key={certification.title} className="card group overflow-hidden transition duration-300 hover:-translate-y-1 hover:border-blue-400/25 hover:bg-blue-500/[.035]">
+                       <div className="aspect-[16/10] overflow-hidden border-b border-white/[0.08] bg-white/[0.04]">
+                         <img src={certification.image} alt={`Zertifikat: ${certification.title}`} className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]" />
+                       </div>
+                       <div className="p-5">
+                         <p className="text-[10px] font-bold uppercase tracking-[.16em] text-blue-400">{certification.provider}</p>
+                         <h4 className="mt-2 text-sm font-semibold leading-snug text-white">{certification.title}</h4>
+                       </div>
+                     </article>
+                   ))}
+                 </div>
+               </div>
+             </div>
+           </div>
+         </section>
 
         <section id="experience" className="py-24 sm:py-32">
           <div className="mx-auto max-w-7xl px-6 lg:px-10">
